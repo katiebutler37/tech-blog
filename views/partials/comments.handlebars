@@ -1,0 +1,14 @@
+<div class="comments">
+    {{!-- can't use post.comment must use this (refers to the parent object or array that's available in the context of the partial) --}}
+  {{#each this}}
+  {{!-- this refers to the single comment in the array of comments (post.comments array)--}}
+  <section class="comment">
+    <div class="meta">
+      {{user.username}} on {{format_date created_at}}
+    </div>
+    <div class="text">
+      {{comment_text}}
+    </div>
+  </section>
+  {{/each}}
+</div>
