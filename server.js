@@ -7,7 +7,6 @@ const exphbs = require('express-handlebars');
 const hbs = exphbs.create({ helpers });
 const session = require('express-session');
 
-
 require('dotenv').config();
 
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -17,7 +16,10 @@ const PORT = process.env.PORT || 3001;
 
 const sess = {
   secret: process.env.SESSION_SECRET,
-  cookie: {},
+  cookie: {
+    maxAge: 60*1000,
+    rolling: true
+  },
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
@@ -30,6 +32,7 @@ app.set('view engine', 'handlebars');
 
 //turn on sessions
 app.use(session(sess));
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

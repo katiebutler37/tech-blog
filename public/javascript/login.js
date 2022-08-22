@@ -9,17 +9,17 @@ async function signupFormHandler(event) {
   if (username && email && password) {
     //add await before promise, can set equal to a variable and remove .then() and .catch(), instead refer to variable after
     const response = await fetch("/api/users", {
-      method: "post",
+      method: "POST",
       body: JSON.stringify({
-        username,
-        email,
-        password,
+        username: username,
+        email: email,
+        password: password
       }),
       headers: { "Content-Type": "application/json" },
     });
     // check the response status
     if (response.ok) {
-      console.log("success");
+      document.location.replace("/dashboard");
     } else {
       alert(response.statusText);
     }
@@ -38,10 +38,10 @@ async function loginFormHandler(event) {
 
   if (email && password) {
     const response = await fetch("/api/users/login", {
-      method: "post",
+      method: "POST",
       body: JSON.stringify({
-        email,
-        password,
+        email: email,
+        password: password
       }),
       headers: { "Content-Type": "application/json" },
     });
