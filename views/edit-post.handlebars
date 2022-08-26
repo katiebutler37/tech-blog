@@ -4,12 +4,12 @@
     Edit Post
   </h2>
   <form class="edit-post-form">
-    <div>
+    <div class="edit-post-fields">
       <input name="post-title" type="text" value="{{post.title}}" />
-      <span>({{post.post_content}})</span>
+      <textarea> {{post.post_content}} </textarea>
     </div>
     <div>
-      {{post.vote_count}} {{format_plural "point" post.vote_count}} by you on {{format_date post.created_at}}
+     Posted by you on {{format_date post.created_at}}
       |
       <a href="/post/{{post.id}}">{{post.comments.length}} {{format_plural "comment" post.comments.length}}</a>
     </div>

@@ -27,7 +27,7 @@ router.get("/:id", (req, res) => {
       {
         //the posts they've created
         model: Post,
-        attributes: ["id", "title", "post_url", "created_at"],
+        attributes: ["id", "title", "post_content", "created_at"],
       },
       {
         model: Comment,
@@ -62,12 +62,14 @@ router.get("/:id", (req, res) => {
 
 // POST /api/users
 router.post("/", (req, res) => {
-  const {body: {username, email, password}} = req
+  console.log("Post user route")
+  console.log(req.body)
   User.create({
-    username,
-    email,
-    password
+    username: req.body.username,
+    password: req.body.password
   }).then((dbUserData) => {
+    console.log("Getting our DB User!")
+    console.log(dbUserData)
     req.session.save(() => {
       req.session.user_id = dbUserData.id;
       req.session.username = dbUserData.username;
@@ -84,12 +86,13 @@ router.post("/", (req, res) => {
 
 router.post("/login", (req, res) => {
   // expects {email: 'lernantino@gmail.com', password: 'password1234'}
-  const {body: {email}} = req
+  console.log(req.body)
   User.findOne({
     where: {
-      email
+      username: req.body.username
     },
   }).then((dbUserData) => {
+    console.log("User found in login")
     if (!dbUserData) {
       res.status(400).json({ message: "No user with that email address!" });
       return;

@@ -11,7 +11,7 @@ router.get('/', withAuth, (req, res) => {
       },
       attributes: [
         'id',
-        'post_url',
+        'post_content',
         'title',
         'created_at',
         [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
@@ -49,7 +49,7 @@ router.get('/', withAuth, (req, res) => {
       },
       attributes: [
         'id',
-        'post_url',
+        'post_content',
         'title',
         'created_at',
         [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
@@ -91,5 +91,14 @@ router.get('/', withAuth, (req, res) => {
         res.status(500).json(err);
       });
   })
+
+  router.get('/add-post', withAuth, (req, res) => {
+    if (req.session.loggedIn) {
+    res.render('add-post');
+  }
+  else {
+    res.render('login')
+  }
+  });
 
 module.exports = router;

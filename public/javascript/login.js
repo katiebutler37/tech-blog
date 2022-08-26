@@ -3,16 +3,14 @@ async function signupFormHandler(event) {
   event.preventDefault();
 
   const username = document.querySelector("#username-signup").value.trim();
-  const email = document.querySelector("#email-signup").value.trim();
   const password = document.querySelector("#password-signup").value.trim();
 
-  if (username && email && password) {
+  if (username && password) {
     //add await before promise, can set equal to a variable and remove .then() and .catch(), instead refer to variable after
     const response = await fetch("/api/users", {
       method: "POST",
       body: JSON.stringify({
         username: username,
-        email: email,
         password: password
       }),
       headers: { "Content-Type": "application/json" },
@@ -33,14 +31,14 @@ document
 async function loginFormHandler(event) {
   event.preventDefault();
 
-  const email = document.querySelector("#email-login").value.trim();
+  const username = document.querySelector("#username-login").value.trim();
   const password = document.querySelector("#password-login").value.trim();
 
-  if (email && password) {
+  if (username && password) {
     const response = await fetch("/api/users/login", {
       method: "POST",
       body: JSON.stringify({
-        email: email,
+        username: username,
         password: password
       }),
       headers: { "Content-Type": "application/json" },
