@@ -4,22 +4,25 @@
 <br>
 <br>
 
-{{!-- {{#if loggedIn}} --}}
 <form class="comment-form">
   <div>
     <textarea name="comment-body"></textarea>
   </div>
 
+{{#if loggedIn}}
   <div>
-    <button class="login-redirect" type="submit">add comment</button>
+    <button type="submit">add comment</button>
   </div>
+  {{else}}
+  <div>
+    <a href="/login" class="login-redirect">add comment</a>
+  </div>
+{{/if}}
+
 </form>
-{{!-- {{/if}} --}}
 
 {{> comments post.comments}}
 
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
-{{else}}
-<script src="/javascript/login-redirect.js"></script>
 {{/if}}
