@@ -3,7 +3,7 @@
   }
 
   :root {
-    --primary-color: rgb(50, 66, 91);
+    --primary-color: rgb(50, 91, 67);
 }
   
   body, html {
@@ -16,7 +16,7 @@
   
   a {
     text-decoration: none;
-    color: #225ca3;
+    color: var(--primary-color);
     font-weight: bold;
     transition: color .1s;
   }
