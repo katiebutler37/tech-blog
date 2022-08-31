@@ -4,23 +4,22 @@
 <br>
 <br>
 
-{{#if loggedIn}}
+{{!-- {{#if loggedIn}} --}}
 <form class="comment-form">
   <div>
     <textarea name="comment-body"></textarea>
   </div>
 
   <div>
-    <button type="submit">add comment</button>
+    <button class="login-redirect" type="submit">add comment</button>
   </div>
 </form>
-{{/if}}
+{{!-- {{/if}} --}}
 
 {{> comments post.comments}}
 
 {{#if loggedIn}}
-{{!-- this absolute -ish link is specific to handlebars rendering, absolute in relation to the servers static assets (public folder) --}}
-{{!-- Request URL: http://localhost:3001/javascript/logout.js --}}
 <script src="/javascript/comment.js"></script>
-
+{{else}}
+<script src="/javascript/login-redirect.js"></script>
 {{/if}}
