@@ -26,7 +26,7 @@
     color: #34eb90;
   }
   
-  button, .login-redirect {
+  button, .login-redirect, #add-post-1 {
     background-color: rgb(232, 184, 26);
     border: 0;
     padding: 1%;
@@ -37,7 +37,7 @@
     border-radius: 5px;
   }
   
-  button:hover, .login-redirect:hover {
+  button:hover, .login-redirect:hover, #add-post-1:hover {
     background-color: #34eb90;
     color: black;
   }

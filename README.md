@@ -21,8 +21,10 @@ To install the project repository, please follow these steps:
 
 ## Usage
 To get started using this Tech Blog...
-1. Navigate to the deployed site.
+1. Navigate to the deployed site: [https://radiant-mesa-21675.herokuapp.com/](https://radiant-mesa-21675.herokuapp.com/).
 2. Sign up to contribute to the online space.
+
+![Single-post View](./public/images/Tech-blog.png)
 
 ## License
 This project is not licensed.
